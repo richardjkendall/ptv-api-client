@@ -20,7 +20,7 @@ Python 2.7 and 3.4+
 This package is available on PyPi, and you can install it in your environment (we recommend always using a venv) as follows
 
 ```sh
-pip install ptvapiclient
+pip install ptvapi
 ```
 (you may need to run `pip` with root permission: `sudo pip install ptvapiclient`)
 
