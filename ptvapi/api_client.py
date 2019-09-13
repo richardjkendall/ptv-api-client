@@ -27,6 +27,9 @@ from ptvapi.configuration import Configuration
 import ptvapi.models
 from ptvapi import rest
 
+# specific signer for 
+from ptvapi.api.signer import get_signed_url
+
 
 class ApiClient(object):
     """Generic API client for Swagger client library builds.
@@ -135,6 +138,16 @@ class ApiClient(object):
             query_params = self.sanitize_for_serialization(query_params)
             query_params = self.parameters_to_tuples(query_params,
                                                      collection_formats)
+        else:
+            query_params = []
+
+        # add devid
+        query_params.append(("devid", config.devid))
+        
+        # get signature
+        signature = get_signed_url(skey = config.key, resource_path = resource_path, query_params = query_params)
+        print("got signature {0}".format(signature))
+        query_params.append(("signature", signature))
 
         # post parameters
         if post_params or files:

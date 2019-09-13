@@ -39,8 +39,8 @@ class Configuration(object):
                 self.__dict__[key] = copy.copy(self._default.__dict__[key])
             return
 
-        # Default Base url
-        self.host = "http://timetableapi.ptv.vic.gov.au"
+        # Default Base url, changed to https
+        self.host = "https://timetableapi.ptv.vic.gov.au"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
@@ -53,6 +53,10 @@ class Configuration(object):
         self.username = ""
         # Password for HTTP basic authentication
         self.password = ""
+
+        # PTVAPI auth specific items
+        self.devid = ""
+        self.key = ""
 
         # Logging Settings
         self.logger = {}
